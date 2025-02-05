@@ -14,12 +14,11 @@ class DCC_PT_Panel(bpy.types.Panel):
         layout.operator("object.apply_translation", text="Apply Translation")
         layout.operator("object.apply_rotation", text="Apply Rotation")
         layout.operator("object.apply_scale", text="Apply Scale")
-        layout.separator()
-        '''''
-        layout.operator("object.add_item", text="Add Item")
-        layout.operator("object.remove_item", text="Remove Item")
-        layout.operator("object.update_item", text="Update Item")
-        '''
+        # layout.separator()
+        # layout.operator("object.add_item", text="Add Item")
+        # layout.operator("object.remove_item", text="Remove Item")
+        # layout.operator("object.update_item", text="Update Item")
+        
 # Blender Registration
 def register():
     bpy.utils.register_class(DCC_PT_Panel)

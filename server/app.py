@@ -92,7 +92,7 @@ def update_quantity():
 def apply_translation():
     data = request.json
     logging.info(f"Received translation data: {data}")
-    return jsonify({"message": "Translation applied", "position": data["position"]}), 200
+    return jsonify({"message": "Translation applied", "position": data["translation"]}), 200
 
 # ✅ Apply rotation
 @app.route("/rotation", methods=["POST"])

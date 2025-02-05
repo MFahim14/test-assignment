@@ -18,9 +18,9 @@ from .ui import DCC_PT_Panel  # Import the UI panel
 
 classes = [
     TransformOperator, TranslationOperator, RotationOperator, ScaleOperator,
-    AddItemOperator, RemoveItemOperator, UpdateItemOperator,
-    DCC_PT_Panel  # Register the UI panel
+    DCC_PT_Panel  # Add UI panel here
 ]
+
 
 def register():
     for cls in classes:
