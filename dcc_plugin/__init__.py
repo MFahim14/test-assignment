@@ -11,8 +11,7 @@ bl_info = {
 
 import bpy
 from .operators import (
-    TransformOperator, TranslationOperator, RotationOperator, ScaleOperator,
-    AddItemOperator, RemoveItemOperator, UpdateItemOperator
+    TransformOperator, TranslationOperator, RotationOperator, ScaleOperator
 )
 from .ui import DCC_PT_Panel  # Import the UI panel
 

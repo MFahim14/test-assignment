@@ -88,50 +88,6 @@ class ScaleOperator(bpy.types.Operator):
         refresh_ui()
         return {'FINISHED'}
 
-# ===========================
-#   Inventory Management Operators
-# ===========================
-class AddItemOperator(bpy.types.Operator):
-    """Send Add Item Request"""
-    bl_idname = "object.add_item"
-    bl_label = "Add Item"
-
-    def execute(self, context):
-        obj = get_active_object()
-        if not obj:
-            return {'CANCELLED'}
-
-        send_request("add_item", {"name": obj.name, "position": list(obj.location)})
-        refresh_ui()
-        return {'FINISHED'}
-
-class RemoveItemOperator(bpy.types.Operator):
-    """Send Remove Item Request"""
-    bl_idname = "object.remove_item"
-    bl_label = "Remove Item"
-
-    def execute(self, context):
-        obj = get_active_object()
-        if not obj:
-            return {'CANCELLED'}
-        
-        send_request("remove_item", {"name": obj.name})
-        refresh_ui()
-        return {'FINISHED'}
-
-class UpdateItemOperator(bpy.types.Operator):
-    """Send Update Item Request"""
-    bl_idname = "object.update_item"
-    bl_label = "Update Item"
-
-    def execute(self, context):
-        obj = get_active_object()
-        if not obj:
-            return {'CANCELLED'}
-        
-        send_request("update_item", {"name": obj.name, "position": list(obj.location)})
-        refresh_ui()
-        return {'FINISHED'}
 
 # ===========================
 #   Blender Registration
@@ -141,18 +97,14 @@ def register():
     bpy.utils.register_class(TranslationOperator)
     bpy.utils.register_class(RotationOperator)
     bpy.utils.register_class(ScaleOperator)
-    bpy.utils.register_class(AddItemOperator)
-    bpy.utils.register_class(RemoveItemOperator)
-    bpy.utils.register_class(UpdateItemOperator)
+
 
 def unregister():
     bpy.utils.unregister_class(TransformOperator)
     bpy.utils.unregister_class(TranslationOperator)
     bpy.utils.unregister_class(RotationOperator)
     bpy.utils.unregister_class(ScaleOperator)
-    bpy.utils.unregister_class(AddItemOperator)
-    bpy.utils.unregister_class(RemoveItemOperator)
-    bpy.utils.unregister_class(UpdateItemOperator)
+
 
 if __name__ == "__main__":
     register()

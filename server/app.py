@@ -13,13 +13,13 @@ print(f"Using database at: {DATABASE}")
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
-# ✅ Function to connect to SQLite
+# Function to connect to SQLite
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
 
-# ✅ Create database if not exists
+# Create database if not exists
 def init_db():
     with get_db_connection() as conn:
         cursor = conn.cursor()
@@ -32,17 +32,17 @@ def init_db():
         """)
         conn.commit()
 
-# ✅ Home route
+# Home route
 @app.route("/")
 def home():
     return "Flask Server is Running!", 200
 
-# ✅ Favicon route (Prevents unnecessary requests from browsers)
+# Favicon route (Prevents unnecessary requests from browsers)
 @app.route("/favicon.ico")
 def favicon():
     return '', 204
 
-# ✅ Fetch inventory
+# Fetch inventory
 @app.route("/inventory", methods=["GET"])
 def get_inventory():
     with get_db_connection() as conn:
@@ -52,7 +52,7 @@ def get_inventory():
         inventory = [{"name": row["name"], "quantity": row["quantity"]} for row in rows]
     return jsonify(inventory), 200
 
-# ✅ Add an item to inventory
+# Add an item to inventory
 @app.route("/add-item", methods=["POST"])
 def add_item():
     data = request.json
@@ -65,7 +65,7 @@ def add_item():
     except sqlite3.IntegrityError:
         return jsonify({"error": "Item already exists"}), 400
 
-# ✅ Remove an item
+# Remove an item
 @app.route("/remove-item", methods=["POST"])
 def remove_item():
     data = request.json
@@ -75,7 +75,7 @@ def remove_item():
         conn.commit()
     return jsonify({"message": "Item removed"}), 200
 
-# ✅ Update item quantity
+# Update item quantity
 @app.route("/update-quantity", methods=["POST"])
 def update_quantity():
     data = request.json
@@ -87,28 +87,28 @@ def update_quantity():
             return jsonify({"error": "Item not found"}), 404
     return jsonify({"message": "Quantity updated"}), 200
 
-# ✅ Apply translation
+# Apply translation
 @app.route("/translation", methods=["POST"])
 def apply_translation():
     data = request.json
     logging.info(f"Received translation data: {data}")
     return jsonify({"message": "Translation applied", "position": data["translation"]}), 200
 
-# ✅ Apply rotation
+# Apply rotation
 @app.route("/rotation", methods=["POST"])
 def apply_rotation():
     data = request.json
     logging.info(f"Received rotation data: {data}")
     return jsonify({"message": "Rotation applied", "rotation": data["rotation"]}), 200
 
-# ✅ Apply scale
+# Apply scale
 @app.route("/scale", methods=["POST"])
 def apply_scale():
     data = request.json
     logging.info(f"Received scale data: {data}")
     return jsonify({"message": "Scale applied", "scale": data["scale"]}), 200
 
-# ✅ Apply full transformation
+# Apply full transformation
 @app.route("/transform", methods=["POST"])
 def transform():
     """Handles full transform data (position, rotation, scale)"""
@@ -120,7 +120,7 @@ def transform():
     app.logger.info(f"Received transform data: {data}")
     return jsonify({"message": "Transform data received", "data": data}), 200
 
-# ✅ Initialize database
+# Initialize database
 init_db()
 
 if __name__ == "__main__":
