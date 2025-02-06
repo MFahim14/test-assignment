@@ -86,7 +86,7 @@ test-assignment
 - View inventory items.
 - Perform operations (add-item, remove, update-item).
 
-## **Code Explanation**
+# **Code Explanation**
 
 # **1. main.py**
 
@@ -780,16 +780,30 @@ if __name__ == "__main__":
 ```
 - Runs `register()` when the script is executed.
 
----
+
 
 ## How to Use
 1. **Ensure the Flask server is running**:
    ```sh
-   python server.py
+   python app.py
    ```
 2. **Load the script in Blender** and register the operators.
 3. **Use the Blender UI** (`View3D > Sidebar > DCC Plugin`) to apply transformations and manage inventory.
 
----
+
+# Key Achievements:
+- **Blender Plugin**: Provides an interactive UI and operators for transformation management.
+- **Flask Server**: Handles transformation and inventory-related API requests efficiently.
+- **SQLite Database**: Ensures persistent storage and real-time inventory updates.
+- **PyQt UI**: Offers an intuitive way to view and modify inventory data with a responsive design.
+
+# Conclusion
+
+The **DCC Plugin with Flask Server and PyQt UI** successfully integrates multiple components—Blender, a Flask-based backend, a SQLite database, and a PyQt UI—to create a streamlined workflow for managing object transformations and inventory data.
+
+This project enhances Blender’s functionality by allowing users to send object transformations (position, rotation, scale) to a local Flask server, where they can be processed and stored in a database. Additionally, the PyQt UI provides a user-friendly interface for managing inventory, ensuring seamless synchronization between Blender and the database.
+
+
+
 
 
